@@ -12,13 +12,13 @@ class Item {
 		// default constructor
 		name = "";
 		space = 1;
-		type = 'item';
+		type = "item";
 	}
 
 	Item(string name, int space) {
-		name = name;
-		space = space;
-		type = 'item';
+		this->name = name;
+		this->space = space;
+		type = "item";
 	}
 
 	string get_type() {
@@ -34,32 +34,28 @@ class Item {
 	}
 
 	void set_type(string type) {
-		type = type;
+		this->type = type;
 	}
 
 	void set_name(string name) {
-		name = name;
+		this->name = name;
 	}
 
 	void set_space(int n) {
 		space = n;
 	}
 
-	MultiSlot get_under() {
+	string get_under() {
+		int l = name.length();
 		string new_name = "";
-		if (space == 2) {
-			int l = name.length();
-			for (int i = 0; i < l; i++) {
-				new_name.append('^');
-			}
-			return new MultiSlot(new_name);
-		} else {
-			return;
+		for (int i = 0; i < l; i++) {
+			new_name += '^';
 		}
+		return new_name;
 	}
 };
 
-class Weapon : Item {
+class Weapon : public Item {
    private:
 	int dice;
 
@@ -71,7 +67,10 @@ class Weapon : Item {
 	}
 
 	Weapon(string name, int space, string type) {
-		Item(name, space);
+		set_name(name);
+		set_space(space);
+		set_type(type);
+
 		if (type == "melee") {
 			if (space == 1) {
 				dice = 6;
@@ -85,8 +84,6 @@ class Weapon : Item {
 				dice = 6;
 			}
 		}
-
-		set_type(type);
 	}
 
 	int get_dice() {
@@ -98,21 +95,23 @@ class Weapon : Item {
 	}
 };
 
-class Armor : Item {
+class Armor : public Item {
    private:
 	int ap;	 // Armor Points
 
    public:
 	Armor() {
-		Item("shield", 1);
-		ap = 1;
+		set_name("shield");
+		set_space(1);
 		set_type("armor");
+		ap = 1;
 	}
 
 	Armor(string name) {
-		Item(name, 1);
-		ap = 1;
+		set_name(name);
+		set_space(1);
 		set_type("armor");
+		ap = 1;
 	}
 
 	int get_ap() {
@@ -120,21 +119,29 @@ class Armor : Item {
 	}
 
 	void set_ap(int ap) {
-		this.ap = ap;
+		this->ap = ap;
 	}
 };
 
-class MultiSlot : Item {
+class MultiSlot : public Item {
    public:
 	MultiSlot(string name) {
-		Item(name, 1);
+		set_name(name);
+		set_space(1);
 		set_type("multi");
 	}
 };
 
-class Empty : Item {
+class Empty : public Item {
    public:
 	Empty() {
-		Item("~~~~~~~~~~~~~~~", 1);
+		set_name("*\t-\t-\t*");
 	}
-}
+};
+
+class Blocked : public Item {
+   public:
+	Blocked() {
+		set_name("XXXXXXXXXXXXX");
+	}
+};

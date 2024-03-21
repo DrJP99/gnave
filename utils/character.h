@@ -1,6 +1,9 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
+#include "die.h"
+#include "inventory.h"
 using namespace std;
 
 class Character {
@@ -12,8 +15,12 @@ class Character {
 	int WIS;
 	int CHA;
 
+	Inventory inv;
+
 	string name;
 	string careers[2];
+
+	int HP;
 
 	int AC;
 	int AP;
@@ -72,9 +79,27 @@ class Character {
 
 	void set_up_random() {
 		// 1 - Roll ability Scores
+		int stats[3];
+		Die d6 = Die();
+		for (int i = 0; i < 3; i++) {
+			stats[i] = d6.roll();
+		}
+
+		set_ability_scores(stats);
+
+		cout << "Your stats are:" << endl
+			 << print_scores() << endl;
 
 		// 2 - Record Secondary Stats (Roll HP)
+		LVL = 1;
+		XP = 0;
+		inv.set_avail_slots(10 + CON);
+		HP = d6.roll();
 
+		cout << "Your secondary stats: " << endl
+			 << "HP: " << HP << endl
+			 << "LVL: " << LVL << " (" << XP << ") " << endl
+			 << "Inventory slots: " << inv.get_avail_slots() << endl;
 		// 3 - Roll for careers
 		// 3.1 - Choose other items
 

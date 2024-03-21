@@ -2,7 +2,7 @@
 using namespace std;
 
 class Item {
-   private:
+   protected:
 	string type;
 	string name;
 	int space;
@@ -25,7 +25,7 @@ class Item {
 		return type;
 	}
 
-	string get_name() {
+	virtual string get_name() {
 		return name;
 	}
 
@@ -61,15 +61,16 @@ class Weapon : public Item {
 
    public:
 	Weapon() {
-		Item("sword", 1);
+		name = "sword";
+		space = 1;
 		dice = 6;
-		set_type("melee");
+		type = "melee";
 	}
 
 	Weapon(string name, int space, string type) {
-		set_name(name);
-		set_space(space);
-		set_type(type);
+		this->name = name;
+		this->space = space;
+		this->type = type;
 
 		if (type == "melee") {
 			if (space == 1) {
@@ -93,6 +94,10 @@ class Weapon : public Item {
 	void set_dice(int n) {
 		dice = n;
 	}
+
+	string get_name() override {
+		return name + " (d" + to_string(dice) + ")";
+	}
 };
 
 class Armor : public Item {
@@ -101,17 +106,17 @@ class Armor : public Item {
 
    public:
 	Armor() {
-		set_name("shield");
-		set_space(1);
-		set_type("armor");
+		name = "shield";
+		space = 1;
 		ap = 1;
+		type = "armor";
 	}
 
 	Armor(string name) {
-		set_name(name);
-		set_space(1);
-		set_type("armor");
+		this->name = name;
+		this->space = 1;
 		ap = 1;
+		type = "armor";
 	}
 
 	int get_ap() {
@@ -121,27 +126,33 @@ class Armor : public Item {
 	void set_ap(int ap) {
 		this->ap = ap;
 	}
+
+	string get_name() override {
+		return name + " (+" + to_string(ap) + ")";
+	}
 };
 
 class MultiSlot : public Item {
    public:
 	MultiSlot(string name) {
-		set_name(name);
-		set_space(1);
-		set_type("multi");
+		this->name = name;
+		space = 1;
+		type = "multi";
 	}
 };
 
 class Empty : public Item {
    public:
 	Empty() {
-		set_name("*\t-\t-\t*");
+		name = "*\t-\t-\t*";
+		type = "empty";
 	}
 };
 
 class Blocked : public Item {
    public:
 	Blocked() {
-		set_name("XXXXXXXXXXXXX");
+		name = "XXXXXXXXXXXXXXX";
+		type = "blocked";
 	}
 };

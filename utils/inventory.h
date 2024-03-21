@@ -59,7 +59,6 @@ class Inventory {
 	}
 
 	void push_item(Item item) {
-		cout << "Debug: Trying to push item - " << item.get_name() << endl;
 		inv.push_back(item);
 		curr_slot++;
 		if (item.get_space() >= 2) {
@@ -82,7 +81,7 @@ class Inventory {
 
 	void print_inv() {
 		for (int i = 0; i < total_slots; i++) {
-			cout << " " << i + 1 << "- " << inv[i].get_name() << endl;
+			cout << " " << i + 1 << "- " << inv[i].get_name() << " " << inv[i].get_type() << endl;
 		}
 	}
 };

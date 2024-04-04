@@ -100,7 +100,13 @@ class Character {
 			 << "HP: " << HP << endl
 			 << "LVL: " << LVL << " (" << XP << ") " << endl
 			 << "Inventory slots: " << inv.get_avail_slots() << endl;
+
 		// 3 - Roll for careers
+
+		Die d100 = Die(100);
+		int career1 = d100.roll();
+		int career2 = d100.roll();
+
 		// 3.1 - Choose other items
 
 		// 4 - Calculate AP and AC

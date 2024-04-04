@@ -15,6 +15,12 @@ class Item {
 		type = "item";
 	}
 
+	Item(string name) {
+		this->name = name;
+		space = 1;
+		type = "item";
+	}
+
 	Item(string name, int space) {
 		this->name = name;
 		this->space = space;

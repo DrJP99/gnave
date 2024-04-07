@@ -2,8 +2,10 @@
 #include <sstream>
 #include <string>
 
+#include "careers.h"
 #include "die.h"
 #include "inventory.h"
+#include "item.h"
 using namespace std;
 
 class Character {
@@ -18,7 +20,7 @@ class Character {
 	Inventory inv;
 
 	string name;
-	string careers[2];
+	Career careers[2];
 
 	int HP;
 

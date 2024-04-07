@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 
-#include "item.h"
 using namespace std;
 
 string random_instrument() {
@@ -199,5 +198,9 @@ class Career {
 
 	void roll_career(int d) {
 		return c[d];
+	}
+
+	string get_name() {
+		return name;
 	}
 };

@@ -1,20 +1,85 @@
+#include <stdlib.h>
+
 #include <iostream>
 #include <vector>
 
 #include "item.h"
 using namespace std;
 
+string random_instrument() {
+	string instruments[] = {
+		"Pan Flute",
+		"Bag Pipes",
+		"Flute",
+		"Shawm",
+		"Hulusi",
+		"Ocarina",
+		"Simple Drum",
+		"Tantan",
+		"Udu",
+		"Maracas",
+		"Gong",
+		"Adufe",
+		"Bumbulum",
+		"Cymbals",
+		"Frame drum",
+		"Nakers",
+		"Pandeiro",
+		"Tabor",
+		"Tambourine",
+		"Timbrel",
+		"Citole",
+		"Cretan lyra",
+		"Dulcimer",
+		"Fiddle",
+		"Gittern",
+		"Guitarra latina",
+		"Guitarra morisca",
+		"Harp",
+		"Hurdy-gurdy",
+		"Lute",
+		"Lyre",
+		"Psaltery",
+		"Rebab",
+		"Rebec",
+		"Tromba marina",
+		"Vielle",
+		"Viol",
+		"Zither",
+		"Bagpipes ",
+		"Bellows pipe",
+		"Bladder pipe",
+		"Bombard",
+		"Buisine",
+		"Crumhorn",
+		"Flageolet",
+		"Flute",
+		"Gemshorn",
+		"Organ",
+		"Portative Organ",
+		"Recorder",
+		"Sackbut",
+		"Shawm",
+		"Tabor Pipe",
+		"Zampogna",
+	};
+
+	int len = sizeof(instruments) / sizeof(instruments[0]);
+	int r = rand() % len + 1;
+	return instruments[r].append(" (instrument)");
+}
+
 // Career c1 = Career("Acolyte", Item("Candlestick", 1), Item("Censer", 1), Item("Incense", 1));
 Career c[] = {
-	Career("Acolyte", Item("Candlestick"), Item("Censer"), Item("Incense")),											 // 1
-	Career("Acrobat", Item("Flash powder"), Item("Balls"), Item("Lamp oil")),											 // 2
-	Career("Actor", Item("Wig"), Item("Makeup"), Item("Costume")),														 // 3
-	Career("Alchemist", Item("Acid"), Item("Mortar/Pestle"), Item("6 vials")),											 // 4
-	Career("Antiquarian", Item("Old coin"), Item("Flag"), Item("Lore book")),											 // 5
-	Career("Arcanist", Item("Spell book"), Item("Arcane robes"), Item("Chalk")),										 // 6
-	Career("Architect", Item("Plumb line"), Item("Level"), Item("Ruler")),												 // 7
-	Career("Assassin", Weapon("Crossbow", 2, "missile"), Weapon("Garrote (strangle)", 1, "melee"), Item("Soft boots")),	 // 8
-	Career("Astrologer", Item("Star charts"), Item("Almanac"), Item("Telescope")),										 // 9
+	Career("Acolyte", Item("Candlestick"), Item("Censer"), Item("Incense")),											 // 01
+	Career("Acrobat", Item("Flash powder"), Item("Balls"), Item("Lamp oil")),											 // 02
+	Career("Actor", Item("Wig"), Item("Makeup"), Item("Costume")),														 // 03
+	Career("Alchemist", Item("Acid"), Item("Mortar/Pestle"), Item("6 vials")),											 // 04
+	Career("Antiquarian", Item("Old coin"), Item("Flag"), Item("Lore book")),											 // 05
+	Career("Arcanist", Item("Spell book"), Item("Arcane robes"), Item("Chalk")),										 // 06
+	Career("Architect", Item("Plumb line"), Item("Level"), Item("Ruler")),												 // 07
+	Career("Assassin", Weapon("Crossbow", 2, "missile"), Weapon("Garrote (strangle)", 1, "melee"), Item("Soft boots")),	 // 08
+	Career("Astrologer", Item("Star charts"), Item("Almanac"), Item("Telescope")),										 // 09
 	Career("Baker", Item("Rolling pin"), Item("Flour bag"), Item("Lard block")),										 // 10
 	Career("Bandit", Item("Mask"), Item("Manacles"), Item("Caltrops")),													 // 11
 	Career("Barber", Item("Scissors"), Item("Hair oil"), Item("Straight razor")),										 // 12
@@ -56,6 +121,31 @@ Career c[] = {
 	Career("Innkeeper", Item("Ladle"), Item("10 candles"), Item("Cauldron")),											 // 48
 	Career("Inquisitor", Item("Manual"), Item("Vestments"), Item("Pliers")),											 // 49
 	Career("Investigator", Item("Journal"), Item("Manacles"), Item("Vial")),											 // 50
+	Career("Jailer", Item("Padlock"), Item("10/' chain"), Item("Wine jug")),											 // 51
+	Career("Jester", Item("Scepter"), Item("Donkey head"), Item("Motley")),												 // 52
+	Career("Jeweler", Item("Pliers"), Item("Loupe"), Item("Tweezers")),													 // 53
+	Career("Knight", Item("Lady's favor"), Item("Banner"), Item("Signet ring")),										 // 54
+	Career("Kidnapper", Item("Chloroform"), Item("Manacles"), Item("Hood")),											 // 55
+	Career("Lawyer", Item("Fancy robe"), Item("Law book"), Item("Certificate")),										 // 56
+	Career("Locksmith", Item("Crowbar"), Item("Picks"), Item("Padlock")),												 // 57
+	Career("Mason", Item("Chisel"), Weapon("Hammer", 1, "melee"), Item("Chalk")),										 // 58
+	Career("Merchant", Item("Scales"), Item("Strongbox"), Item("Bag of spice")),										 // 59
+	Career("Miner", Weapon("Pickaxe", 1, "melee"), Item("Lantern"), Item("Pet canary")),								 // 60
+	Career("Musician", Item(random_instrument()), Item(random_instrument()), Item(random_instrument())),				 // 61
+	Career("Naturalist", Item("Fossil"), Item("Insect case"), Item("Geode")),											 // 62
+	Career("Officer", Item("Shoe polish"), Item("Medal"), Item("Spyglass")),											 // 63
+	Career("Oracle", Item("Tea leaves"), Item("Tarot deck"), Item("Crystal")),											 // 64
+	Career("Orator", Item("100 marbles"), Item("Bullhorn"), Item("Wax tablet")),										 // 65
+	Career("Painter", Item("Linseed oil"), Item("Pigments"), Item("Brushes")),											 // 66
+	Career("Peddler", Item("Bucket"), Item("300/' twine"), Item("Mirror")),												 // 67
+	Career("Philosopher", Item("Staff"), Item("Lantern"), Item("Chalk")),												 // 68
+	Career("Physician", Item("Saw"), Item("Scalpel"), Item("Wine jug")),												 // 69
+	Career("Pilgrim", Item("Staff"), Item("Relic"), Item("Letter of passage")),											 // 70
+	Career("Pirate", Item("Sextant"), Item("Cannonball"), Item("Grappling hook")),										 // 71
+	Career("Pit Fighter", Item("Net"), Weapon("Whip", 1, "melee"), Item("Wine jug")),									 // 72
+	Career("Playwright", Item("Quill/ink"), Item("Skull"), Item("10 candles")),											 // 73
+	Career("Poacher", Item("Animal scent"), Weapon("Bow", 2, "missile"), Item("20 arrows")),							 // 74
+	Career("Poet", Item("Stationery"), Item("Bell"), Item("Perfume")),													 // 75
 };
 
 class Career {

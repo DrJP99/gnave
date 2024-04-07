@@ -67,6 +67,12 @@ class Inventory {
 		}
 	}
 
+	void push_items(vector<Item> items) {
+		for (auto& i : items) {
+			push_item(i);
+		}
+	}
+
 	void finish_inv() {
 		cout << "Finishing inv..." << endl;
 		for (int c = curr_slot; c < total_slots; c++) {

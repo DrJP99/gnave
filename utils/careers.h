@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 
+#include "item.h"
 using namespace std;
 
 string random_instrument() {
@@ -68,8 +69,39 @@ string random_instrument() {
 	return instruments[r].append(" (instrument)");
 }
 
-// Career c1 = Career("Acolyte", Item("Candlestick", 1), Item("Censer", 1), Item("Incense", 1));
-Career c[] = {
+class Career {
+   public:
+	vector<Item> items;
+	string name;
+
+	Career() {}
+
+	Career(string name, Item item1, Item item2, Item item3) {
+		this->name = name;
+		items.push_back(item1);
+		items.push_back(item2);
+		items.push_back(item3);
+	}
+
+	Career(string name, vector<Item> items) {
+		this->name = name;
+		this->items = items;
+	}
+
+	string get_name() {
+		return name;
+	}
+
+	Item get_item(int n) {
+		return items[n];
+	}
+
+	vector<Item> get_items() {
+		return items;
+	}
+};
+
+Career all_careers[] = {
 	Career("Acolyte", Item("Candlestick"), Item("Censer"), Item("Incense")),											 // 01
 	Career("Acrobat", Item("Flash powder"), Item("Balls"), Item("Lamp oil")),											 // 02
 	Career("Actor", Item("Wig"), Item("Makeup"), Item("Costume")),														 // 03
@@ -170,37 +202,4 @@ Career c[] = {
 	Career("Trapper", Item("Bear trap"), Item("300/' twine"), Item("Bear pelt")),										 // 98
 	Career("Watchman", Item("Lantern"), Item("Trumpet"), Weapon("Spear", 2, "melee")),									 // 99
 	Career("Woodcutter", Weapon("Axe", 1, "melee"), Item("Firewood"), Item("50/' rope")),								 // 100
-};
-
-class Career {
-   public:
-	vector<Item> items;
-	string name;
-
-	Career() {}
-
-	Career(int d) {
-		// d = dice rolled;
-		roll_career(d);
-	}
-
-	Career(string name, Item item1, Item item2, Item item3) {
-		this->name = name;
-		items.push_back(item1);
-		items.push_back(item2);
-		items.push_back(item3);
-	}
-
-	Career(string name, vector<Item> items) {
-		this->name = name;
-		this->items = items;
-	}
-
-	void roll_career(int d) {
-		return c[d];
-	}
-
-	string get_name() {
-		return name;
-	}
 };

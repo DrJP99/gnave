@@ -5,7 +5,6 @@
 #include "careers.h"
 #include "die.h"
 #include "inventory.h"
-#include "item.h"
 using namespace std;
 
 class Character {
@@ -40,6 +39,8 @@ class Character {
 		INT = 0;
 		WIS = 0;
 		CHA = 0;
+
+		inv = Inventory();
 	}
 
 	void set_ability_scores(int scores[3]) {
@@ -95,7 +96,7 @@ class Character {
 		// 2 - Record Secondary Stats (Roll HP)
 		LVL = 1;
 		XP = 0;
-		inv.set_avail_slots(10 + CON);
+		inv = Inventory(CON);
 		HP = d6.roll();
 
 		cout << "Your secondary stats: " << endl
@@ -107,7 +108,23 @@ class Character {
 
 		Die d100 = Die(100);
 		int career1 = d100.roll();
-		int career2 = d100.roll();
+		int career2;
+		do {
+			int career2 = d100.roll();
+		} while (career1 == career2);
+
+		careers[0] = all_careers[career1 - 1];
+		careers[1] = all_careers[career2 - 1];
+
+		// 3.0.1 get careers items
+
+		inv.push_items(careers[0].get_items());
+		inv.push_items(careers[1].get_items());
+
+		cout << "Your careers are:\n ("
+			 << career1 << ") " << careers[0].get_name() << "; (" << career2 << ") " << careers[1].get_name() << endl;
+		inv.finish_inv();
+		inv.print_inv();
 
 		// 3.1 - Choose other items
 

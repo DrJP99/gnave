@@ -146,6 +146,31 @@ Career c[] = {
 	Career("Playwright", Item("Quill/ink"), Item("Skull"), Item("10 candles")),											 // 73
 	Career("Poacher", Item("Animal scent"), Weapon("Bow", 2, "missile"), Item("20 arrows")),							 // 74
 	Career("Poet", Item("Stationery"), Item("Bell"), Item("Perfume")),													 // 75
+	Career("Priest", Item("Holy water"), Item("10 stakes"), Item("Prayer book")),										 // 76
+	Career("Prospector", Item("10 iron spikes"), Weapon("Pickaxe", 1, "melee"), Item("Pan")),							 // 77
+	Career("Puppeteer", Item("Confetti"), Item("Puppet"), Item("Sewing kit")),											 // 78
+	Career("Rat Catcher", Item("Cage"), Item("10 rat traps"), Item("Sack")),											 // 79
+	Career("Saboteur", Item("Air bladder"), Item("Crowbar"), Item("Bomb")),												 // 80
+	Career("Sailor", Item("Beeswax"), Item("Pullies"), Item("Spyglass")),												 // 81
+	Career("Scout", Item("Signal flags"), Item("Black grease"), Item("Dice")),											 // 82
+	Career("Scribe", Item("Lamp oil"), Item("Quill/ink"), Item("Sealing wax")),											 // 83
+	Career("Sculptor", Item("Chisel"), Item("Clay"), Item("Calipers")),													 // 84
+	Career("Servant", Item("Sponge"), Item("Silverware"), Item("Poker")),												 // 85
+	Career("Shepherd", Item("Crook"), Item(random_instrument()), Weapon("Sling", 1, "missile")),						 // 86
+	Career("Shipwright", Item("Drill"), Weapon("Hammer", 1, "melee"), Weapon("Axe", 1, "melee")),						 // 87
+	Career("Singer", Item("Mirror"), Item("Makeup"), Item("Locket")),													 // 88
+	Career("Smuggler", Item("Pulleys"), Item("Rope"), Item("Makeup")),													 // 89
+	Career("Soldier", Item("Tent"), Item("Card deck"), Item("Shovel")),													 // 90
+	Career("Spy", Item("Caltrops"), Item("Poison"), Item("Forged papers")),												 // 91
+	Career("Squire", Item("Torch"), Item("Armor polish"), Item("Trumpet")),												 // 92
+	Career("Tailor", Item("Sewing kit"), Item("Scissors"), Item("Soap")),												 // 93
+	Career("Tattooist", Item("Soot pot"), Item("Needles"), Item("10 candles")),											 // 94
+	Career("Thieftaker", Item("Bear trap"), Item("Manacles"), Item("Torch")),											 // 95
+	Career("Thug", Item("Poison"), Weapon("Knife", 1, "melee"), Item("Lamp oil")),										 // 96
+	Career("Torturer", Item("Drill"), Item("Hourglass"), Item("10/' chain")),											 // 97
+	Career("Trapper", Item("Bear trap"), Item("300/' twine"), Item("Bear pelt")),										 // 98
+	Career("Watchman", Item("Lantern"), Item("Trumpet"), Weapon("Spear", 2, "melee")),									 // 99
+	Career("Woodcutter", Weapon("Axe", 1, "melee"), Item("Firewood"), Item("50/' rope")),								 // 100
 };
 
 class Career {

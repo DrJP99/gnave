@@ -65,7 +65,7 @@ string random_instrument() {
 	};
 
 	int len = sizeof(instruments) / sizeof(instruments[0]);
-	int r = rand() % len + 1;
+	int r = rand() % len;
 	return instruments[r].append(" (instrument)");
 }
 
@@ -198,13 +198,6 @@ class Career {
 	}
 
 	void roll_career(int d) {
-		switch (d) {
-			case (1):
-
-				break;
-
-			default:
-				break;
-		}
+		return c[d];
 	}
 };

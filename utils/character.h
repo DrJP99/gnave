@@ -5,9 +5,10 @@
 #include "careers.h"
 #include "die.h"
 #include "inventory.h"
+
 using namespace std;
 
-void random_items(Inventory inv) {
+void random_items(Inventory &inv) {
 	int ap = 0;
 	int rand = 0;
 	bool has_weapon = false;
@@ -41,34 +42,39 @@ void random_items(Inventory inv) {
 	};
 
 	Die rand_die = Die(2);
-
 	for (int i = inv.get_curr_slot(); i < inv.get_avail_slots(); i++) {
+		rand = rand_die.roll();
 		switch (rand) {
-			case 1:
+			case 1: {
 				// 3d6 * 10 coins
 				int coins = (d.roll() + d.roll() + d.roll()) * 10;
 				inv.push_item(Item(to_string(coins).append(" coins")));
 				break;
-			case 2:
+			}
+			case 2: {
 				inv.push_item(Item("Rations 2x"));
 				break;
-			case 3:
+			}
+			case 3: {
 				inv.push_item(Item("50' rope"));
 				break;
-			case 4:
+			}
+			case 4: {
 				inv.push_item(Item("Torches 2x"));
 				break;
-			case 5:
+			}
+			case 5: {
 				int choice = 1;
 				if (!has_weapon) {
 					choice = rand_die.roll();
 				}
 				switch (choice) {
-					case 1:
+					case 1: {
 						inv.push_item(armors[ap]);
 						ap++;
 						break;
-					case 2:
+					}
+					case 2: {
 						bool has_space = true;
 						Weapon selected_weapon;
 						do {
@@ -78,13 +84,18 @@ void random_items(Inventory inv) {
 						has_weapon = true;
 						inv.push_item(selected_weapon);
 						break;
+					}
 				}
 				break;
-			case 6:
+			}
+			case 6: {
 				inv.push_item(Item("Quiver (20 arrows)"));
 				break;
+			}
 		}
 	}
+
+	// return inv;
 }
 
 class Character {
@@ -170,10 +181,8 @@ class Character {
 
 		set_ability_scores(stats);
 
-		cout << "Your stats are:" << endl
-			 << print_scores() << endl;
-
 		// 2 - Record Secondary Stats (Roll HP)
+
 		LVL = 1;
 		XP = 0;
 		inv = Inventory(CON);
@@ -187,30 +196,38 @@ class Character {
 		// 3 - Roll for careers
 
 		Die d100 = Die(100);
+		d100.roll();
 		int career1 = d100.roll();
 		int career2;
 		do {
-			int career2 = d100.roll();
+			career2 = d100.roll();
 		} while (career1 == career2);
+
+		cout << "Rolled: " << career1 << " and " << career2 << endl;
 
 		careers[0] = all_careers[career1 - 1];
 		careers[1] = all_careers[career2 - 1];
+		cout << "here" << endl;
 
 		// 3.0.1 get careers items
 
 		inv.push_items(careers[0].get_items());
 		inv.push_items(careers[1].get_items());
 
-		// cout << "Your careers are:\n ("
-		// 	 << career1 << ") " << careers[0].get_name() << "; (" << career2 << ") " << careers[1].get_name() << endl;
-		// inv.finish_inv();
-		// inv.print_inv();
+		cout << "Your careers are:\n ("
+			 << career1 << ") " << careers[0].get_name() << "; (" << career2 << ") " << careers[1].get_name() << endl;
 
 		// 3.1 - Choose other items
 
 		if (this->INT >= 1) {
 			Item spell_item = Item("Spell");
+			inv.push_item(spell_item);
 		}
+
+		random_items(inv);
+
+		inv.finish_inv();
+		inv.print_inv();
 
 		// 4 - Calculate AP and AC
 

@@ -10,24 +10,24 @@ int main(int argc, char *argv[]) {
 
 	// cout << "enter a number n: ";
 	// cin >> n;
-	string name = "john";
+	// string name = "john";
 
-	Die myDie = Die(n);
+	// Die myDie = Die(n);
 	Character my_character = Character();
 
-	Item item1 = Item("Quiver (20)", 1);
-	Item item2 = Item("backpack", 1);
-	Item item3 = Item("Torch (3)", 1);
-	Weapon sword = Weapon("Zweihander", 2, "melee");
+	// Item item1 = Item("Quiver (20)", 1);
+	// Item item2 = Item("backpack", 1);
+	// Item item3 = Item("Torch (3)", 1);
+	// Weapon sword = Weapon("Zweihander", 2, "melee");
 
-	Inventory inventory = Inventory();
-	inventory.push_item(item1);
-	inventory.push_item(item2);
-	inventory.push_item(item3);
-	inventory.push_item(sword);
+	// Inventory inventory = Inventory();
+	// inventory.push_item(item1);
+	// inventory.push_item(item2);
+	// inventory.push_item(item3);
+	// inventory.push_item(sword);
 
-	inventory.finish_inv();
-	inventory.print_inv();
+	// inventory.finish_inv();
+	// inventory.print_inv();
 
 	////////
 

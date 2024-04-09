@@ -44,6 +44,10 @@ class Inventory {
 		return inv;
 	}
 
+	Item get_inv_at(int n) {
+		return inv[n];
+	}
+
 	void set_total_slots(int total_slots) {
 		this->total_slots = total_slots;
 	}
@@ -77,12 +81,14 @@ class Inventory {
 	}
 
 	void finish_inv() {
-		cout << "Finishing inv..." << endl;
-		for (int c = curr_slot; c < total_slots; c++) {
-			if (c < avail_slots) {
-				inv.push_back(Empty());
-			} else {
-				inv.push_back(Blocked());
+		if (!finished) {
+			cout << "Finishing inv..." << endl;
+			for (int c = curr_slot; c < total_slots; c++) {
+				if (c < avail_slots) {
+					inv.push_back(Empty());
+				} else {
+					inv.push_back(Blocked());
+				}
 			}
 		}
 	}

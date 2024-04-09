@@ -117,7 +117,7 @@ Career all_careers[] = {
 	Career("Beast Tamer", Weapon("Whip", 1, "melee"), Item("Gloves"), Item("Leash")),									 // 13
 	Career("Beekeeper", Item("Honey"), Item("Mask"), Item("Smoke bomb")),												 // 14
 	Career("Blacksmith", Weapon("Hammer", 1, "melee"), Item("Bellows"), Item("Tongs")),									 // 15
-	Career("Boatman", Item("10\' pole", 2), Item("Instrument"), Item("Paddle")),										 // 16
+	Career("Boatman", Item("10' pole", 2), Item("Instrument"), Item("Paddle")),											 // 16
 	Career("Bookbinder", Item("Sewing kit"), Item("Glue"), Item("Quill/ink")),											 // 17
 	Career("Brewer", Item("Mash paddle"), Item("Beer keg"), Item("Hops")),												 // 18
 	Career("Burglar", Item("Lockpicks"), Item("Grappling hook"), Item("Rope")),											 // 19

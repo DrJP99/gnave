@@ -9,6 +9,7 @@ class Inventory {
 	int avail_slots;   // Slots available to the player (10 + CON)
 	int curr_slot;	   // current slot counter
 	vector<Item> inv;  // actual inventory
+	bool finished;	   // check if inventory has been finished for printing
 
    public:
 	Inventory() {
@@ -16,6 +17,7 @@ class Inventory {
 		avail_slots = 10;
 		curr_slot = 0;
 		inv = {};
+		finished = false;
 	}
 
 	Inventory(int CON) {
@@ -23,6 +25,7 @@ class Inventory {
 		avail_slots = 10 + CON;
 		curr_slot = 0;
 		inv = {};
+		finished = false;
 	}
 
 	int get_total_slots() {
@@ -85,6 +88,10 @@ class Inventory {
 	}
 
 	void print_inv() {
+		if (!finished) {
+			this->finish_inv();
+		}
+
 		for (int i = 0; i < total_slots; i++) {
 			cout << " " << i + 1 << "- " << inv[i].get_name() << " " << inv[i].get_type() << endl;
 		}

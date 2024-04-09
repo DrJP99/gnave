@@ -212,8 +212,6 @@ class Character {
 			Item spell_item = Item("Spell");
 		}
 
-		for (int)
-
 		// 4 - Calculate AP and AC
 
 		// 5 - Name and describe character

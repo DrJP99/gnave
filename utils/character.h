@@ -43,7 +43,7 @@ void random_items(Inventory &inv) {
 
 	Die rand_die = Die(2);
 	for (int i = inv.get_curr_slot(); i < inv.get_avail_slots(); i++) {
-		rand = rand_die.roll();
+		rand = d.roll();
 		switch (rand) {
 			case 1: {
 				// 3d6 * 10 coins
@@ -188,11 +188,6 @@ class Character {
 		inv = Inventory(CON);
 		HP = d6.roll();
 
-		cout << "Your secondary stats: " << endl
-			 << "HP: " << HP << endl
-			 << "LVL: " << LVL << " (" << XP << ") " << endl
-			 << "Inventory slots: " << inv.get_avail_slots() << endl;
-
 		// 3 - Roll for careers
 
 		Die d100 = Die(100);
@@ -203,19 +198,13 @@ class Character {
 			career2 = d100.roll();
 		} while (career1 == career2);
 
-		cout << "Rolled: " << career1 << " and " << career2 << endl;
-
 		careers[0] = all_careers[career1 - 1];
 		careers[1] = all_careers[career2 - 1];
-		cout << "here" << endl;
 
 		// 3.0.1 get careers items
 
 		inv.push_items(careers[0].get_items());
 		inv.push_items(careers[1].get_items());
-
-		cout << "Your careers are:\n ("
-			 << career1 << ") " << careers[0].get_name() << "; (" << career2 << ") " << careers[1].get_name() << endl;
 
 		// 3.1 - Choose other items
 
@@ -226,11 +215,34 @@ class Character {
 
 		random_items(inv);
 
-		inv.finish_inv();
-		inv.print_inv();
-
 		// 4 - Calculate AP and AC
 
+		this->AP = inv.calculate_ap();
+		this->AC = AP + 11;
+
 		// 5 - Name and describe character
+
+		this->name = "John";
+	}
+
+	void print() {
+		string separator = "~~~~~~~~~~~~~~~";
+		cout << "Name: " << name << endl;
+		cout << "Careers: " << careers[0].get_name() << ", " << careers[1].get_name() << endl;
+
+		// cout << "Stats: " << endl;
+		cout << separator << endl;
+		cout << " STR: " << STR << "\t\t"
+			 << "LVL: " << LVL << "; XP: " << XP << endl;
+		cout << " DEX: " << DEX << "\t\t"
+			 << "HP:  " << HP << "/" << HP << endl;
+		cout << " CON: " << CON << "\t\t"
+			 << "AC:  " << AC << "; AP: " << AP << endl;
+		cout << " INT: " << INT << endl;
+		cout << " WIS: " << WIS << endl;
+		cout << " CHA: " << CHA << endl;
+		cout << separator << endl;
+		cout << "> Item slots: [" << inv.get_avail_slots() << "]" << endl;
+		inv.print_inv();
 	}
 };

@@ -82,7 +82,7 @@ class Inventory {
 
 	void finish_inv() {
 		if (!finished) {
-			cout << "Finishing inv..." << endl;
+			// cout << "Finishing inv..." << endl;
 			for (int c = curr_slot; c < total_slots; c++) {
 				if (c < avail_slots) {
 					inv.push_back(Empty());
@@ -98,8 +98,23 @@ class Inventory {
 			this->finish_inv();
 		}
 
+		string padding = "";
 		for (int i = 0; i < total_slots; i++) {
-			cout << " " << i + 1 << "- " << inv[i].get_name() << " " << inv[i].get_type() << endl;
+			padding = " ";
+			if (i + 1 < 10) {
+				padding = "  ";
+			}
+			cout << padding << i + 1 << "- " << inv[i].get_name() << " " << inv[i].get_type() << endl;
 		}
+	}
+
+	int calculate_ap() {
+		int ap = 0;
+		for (int i = 0; i < this->curr_slot; i++) {
+			if (inv[i].get_type() == "armor") {
+				ap++;
+			}
+		}
+		return ap;
 	}
 };

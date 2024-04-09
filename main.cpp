@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
 	////////
 
 	my_character.set_up_random();
+	my_character.print();
 
 	cout << "Exiting..." << endl;
 

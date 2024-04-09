@@ -59,6 +59,10 @@ class Item {
 		}
 		return new_name;
 	}
+
+	int get_ap() {
+		return 0;
+	}
 };
 
 class Weapon : public Item {

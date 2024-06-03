@@ -104,7 +104,7 @@ class Inventory {
 			if (i + 1 < 10) {
 				padding = "  ";
 			}
-			cout << padding << i + 1 << "- " << inv[i].get_name() << " " << inv[i].get_type() << endl;
+			cout << padding << i + 1 << "- " << inv[i].get_name() << " " << endl;
 		}
 	}
 
